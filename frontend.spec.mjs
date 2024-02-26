@@ -1,18 +1,13 @@
-// Import necessary modules
 import { Builder, By, until } from 'selenium-webdriver';
 import { expect } from 'chai';
 
-// Describe your test suite
 describe('Web Frontend Testing', function () {
   let driver;
 
-  // Setup before running tests
   before(async function () {
-    // Initialize the WebDriver instance
     driver = await new Builder().forBrowser('chrome').build();
   });
 
-  // Cleanup after running tests
   after(async function () {
     if (driver) {
       await driver.quit();
@@ -49,29 +44,17 @@ describe('Web Frontend Testing', function () {
     expect(url).to.equal('https://de.wikipedia.org/wiki/IFixit');
   });
 
-  // Add more test cases as needed
-
   // Functions to be coded
 
   async function searchIfixit() {
-    await driver.findElement(By.id('searchInput')).sendKeys('iFixit');
-    await driver.findElement(By.css('button[type="submit"]')).click();
+    //Code Here
   }
 
   async function getHeadQuarters() {
-    const headQuarters = await driver.findElement(By.css('.infobox-data.label a')).getText();
-    return headQuarters;
+    //Code Here
   }
 
   async function switchToGerman() {
-    await driver.findElement(By.id('p-lang-btn-checkbox')).click();
-
-    // Wait for the element to be present and clickable
-    const germanLanguageLink = await driver.wait(until.elementLocated(By.css('li[title="Deutsch"]')), 5000);
-
-    // Wait for the element to be visible and clickable
-    await driver.wait(until.elementIsVisible(germanLanguageLink), 5000);
-    await driver.wait(until.elementIsEnabled(germanLanguageLink), 5000);
-    await germanLanguageLink.click();
+    //Code Here
   }
 });
