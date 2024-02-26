@@ -20,4 +20,4 @@ Coding challenge for webdriver automation.
 - Run the test with the command `npm test`
 
 ### Once you are done
-Send an email with a link to your cloned repository on github to your point of contact at Dozuki
+Send an email with a link to your cloned repository on github to jrodger312@dozuki.com

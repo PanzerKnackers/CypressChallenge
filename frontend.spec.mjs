@@ -38,6 +38,8 @@ describe('Web Frontend Testing', function () {
     expect(headQuartersText).to.equal("San Luis Obispo, California");
   });
 
+  // Test case 4
+  
   it('should have the url "https://de.wikipedia.org/wiki/IFixit" after switching the language to German', async function() {
     await switchToGerman();
     const url = await driver.getCurrentUrl();
