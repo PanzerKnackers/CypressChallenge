@@ -1,6 +1,8 @@
 import { Builder, By, until } from 'selenium-webdriver';
 import { expect } from 'chai';
 
+// All code should be put in the three functions at the bottom of the file that have the comment "Code Here"
+
 describe('Web Frontend Testing', function () {
   let driver;
 
