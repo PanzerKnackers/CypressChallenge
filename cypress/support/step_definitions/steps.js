@@ -1,7 +1,11 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
 // Background steps
-Given("I am on the Cypress example page", () => {
+Given("I am on the Cypress Kitchen Sink application", () => {
+  cy.visit("/");
+});
+
+Given("I am on the main page", () => {
   cy.visit("/");
 });
 
@@ -11,7 +15,7 @@ When("I visit the main page", () => {
 });
 
 When("I navigate to the {string} section", (section) => {
-  cy.contains(section).click();
+  cy.get('.navbar-nav').contains(section).click();
 });
 
 // Assertion steps
@@ -19,52 +23,69 @@ Then("I should see the page title contains {string}", (title) => {
   cy.title().should("contain", title);
 });
 
-Then("I should see the navigation menu", () => {
+Then("I should see the main navigation sidebar", () => {
   cy.get('.navbar-nav').should('be.visible');
+  cy.get('.navbar-nav').should('contain', 'Querying');
+  cy.get('.navbar-nav').should('contain', 'Actions');
 });
 
-// Form interaction steps
-When("I fill out a sample form", () => {
+Then("I should be on the {string} page", (section) => {
+  cy.url().should('include', section.toLowerCase());
+});
+
+Then("the page should load correctly", () => {
+  cy.get('h1, h2, h3').should('be.visible');
+});
+
+// Actions section interactions
+Given("I navigate to the {string} section", (section) => {
+  cy.get('.navbar-nav').contains(section).click();
+});
+
+When("I interact with action elements", () => {
+  // Basic interaction - click on a button if available
+  cy.get('button').first().should('be.visible');
+  cy.log('Interacting with action elements');
+});
+
+Then("the interactions should work correctly", () => {
+  // Verify we're in the actions section
+  cy.url().should('include', 'actions');
+  cy.get('h1').should('contain', 'Actions');
+});
+
+// TODO scenarios for candidates to implement
+When("I fill out various form elements", () => {
   // TODO: Implement form filling logic
-  // Example:
-  // cy.get('[data-cy="email"]').type('test@example.com');
-  // cy.get('[data-cy="password"]').type('password123');
-  cy.log('Form filling logic to be implemented');
+  // Candidates should find and interact with:
+  // - Text inputs
+  // - Checkboxes
+  // - Radio buttons
+  // - Select dropdowns
+  // - File uploads (if available)
+  cy.log('TODO: Implement form filling logic');
+  
+  // Hint: Look for elements in the Actions section
+  // Example patterns:
+  // cy.get('[data-cy="action-email"]').type('test@example.com');
+  // cy.get('[data-cy="action-disabled"]').should('be.disabled');
 });
 
-Then("the form should accept my input", () => {
+Then("all form inputs should accept my data", () => {
   // TODO: Implement form validation
-  cy.log('Form validation logic to be implemented');
+  // Candidates should verify:
+  // - Text was entered correctly
+  // - Checkboxes/radios were selected
+  // - Dropdowns show correct selection
+  cy.log('TODO: Implement form validation logic');
 });
 
-Then("I should be able to submit the form", () => {
-  // TODO: Implement form submission
-  cy.log('Form submission logic to be implemented');
-});
-
-// Button interaction steps
-When("I click on the {string} button", (buttonType) => {
-  // TODO: Implement button clicking logic based on type
-  cy.log(`Clicking ${buttonType} button`);
-});
-
-Then("I should see the appropriate {string}", (response) => {
-  // TODO: Implement response validation
-  cy.log(`Validating ${response}`);
-});
-
-// Error handling steps
-When("I trigger a network error", () => {
-  // TODO: Implement network error simulation
-  cy.log('Network error simulation to be implemented');
-});
-
-Then("I should see an appropriate error message", () => {
-  // TODO: Implement error message validation
-  cy.log('Error message validation to be implemented');
-});
-
-Then("the application should handle the error gracefully", () => {
-  // TODO: Implement graceful error handling validation
-  cy.log('Graceful error handling validation to be implemented');
+Then("I should be able to interact with buttons and links", () => {
+  // TODO: Implement button/link interaction testing
+  // Candidates should test:
+  // - Button clicks
+  // - Link navigation
+  // - Hover effects
+  // - Focus states
+  cy.log('TODO: Implement button and link interaction logic');
 });

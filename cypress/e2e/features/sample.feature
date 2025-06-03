@@ -1,38 +1,39 @@
-Feature: Sample Web Application Testing
+Feature: Cypress Kitchen Sink Testing
   As a QA engineer
-  I want to test a web application
-  So that I can ensure it works correctly
+  I want to test the Cypress example application
+  So that I can demonstrate my automation skills
 
   Background:
-    Given I am on the Cypress example page
+    Given I am on the Cypress Kitchen Sink application
 
   @smoke
-  Scenario: Verify page title and navigation
+  Scenario: Verify page title and main navigation
     When I visit the main page
     Then I should see the page title contains "Kitchen Sink"
-    And I should see the navigation menu
+    And I should see the main navigation sidebar
 
   @regression
-  Scenario: Interact with form elements
-    Given I navigate to the "Forms" section
-    When I fill out a sample form
-    Then the form should accept my input
-    And I should be able to submit the form
+  Scenario: Navigate to Actions section and interact with elements
+    Given I navigate to the "Actions" section
+    When I interact with action elements
+    Then the interactions should work correctly
 
   @regression
-  Scenario Outline: Test different button interactions
-    Given I navigate to the "Elements" section
-    When I click on the "<button_type>" button
-    Then I should see the appropriate "<response>"
+  Scenario Outline: Test navigation to different sections
+    Given I am on the main page
+    When I navigate to the "<section>" section
+    Then I should be on the "<section>" page
+    And the page should load correctly
 
     Examples:
-      | button_type | response |
-      | primary     | success message |
-      | secondary   | info message |
+      | section    |
+      | Querying   |
+      | Actions    |
+      | Assertions |
 
-  @edge-case
-  Scenario: Handle error scenarios
-    Given I navigate to the "Network Requests" section
-    When I trigger a network error
-    Then I should see an appropriate error message
-    And the application should handle the error gracefully
+  @challenge
+  Scenario: Complete form interactions (TODO for candidates)
+    Given I navigate to the "Actions" section
+    When I fill out various form elements
+    Then all form inputs should accept my data
+    And I should be able to interact with buttons and links
