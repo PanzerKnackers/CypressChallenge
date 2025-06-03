@@ -3,7 +3,7 @@ import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 // Login step
 Given("I am logged in as an administrator", () => {
   cy.visit("/login");
-  cy.get('input[name="username"]').type("admin");
+  cy.get('input[name="login-id"]').type("admin");
   cy.get('input[name="password"]').type("admin123");
   cy.get('button[type="submit"]').click();
   cy.url().should('include', '/Manage'); // Verify we're redirected to management area
