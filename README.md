@@ -169,3 +169,5 @@ Good luck! This challenge tests your ability to quickly understand a form workfl
 ---
 
 **Remember**: Focus on getting the main scenario working first. The bonus is truly optional for extra credit.
+
+Send an email with a link to your cloned repository on github to Justin.Glenn@dozuki.com before the next round of interviews
