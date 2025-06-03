@@ -1,23 +1,62 @@
-# WebDriverChallenge
-Coding challenge for webdriver automation.
+# Cypress/Gherkin Coding Challenge
 
-### Things you will need to complete this challenge:
-- nodejs
-- a code editor
+Welcome to the Cypress/Gherkin coding challenge! This repository contains a starter template for demonstrating your BDD and test automation skills.
 
-### Documentation
-- https://www.selenium.dev/documentation/webdriver/
-- https://www.chaijs.com/guide/styles/
-- https://www.chaijs.com/api/bdd/
+## Quick Start
 
-### If you do not have nodejs installed on your computer, it can be downloaded here:
-- https://nodejs.org/en/download/current
+1. Clone this repository
+2. Install dependencies: `npm install`
+3. Run tests: `npm test`
+4. Open interactive mode: `npm run cy:open`
 
-### Steps to get started and run your test
-- Clone this repository
-- Open the repository in your code editor of choice
-- Run `npm install`
-- Run the test with the command `npm test`
+## Your Task
 
-### Once you are done
-Send an email with a link to your cloned repository on github to jesse.rodger@dozuki.com before the next round of interviews
+Complete the TODO items in the step definitions and create comprehensive tests for the sample scenarios. Focus on:
+
+- Writing clean, readable step definitions
+- Using Cypress best practices
+- Implementing proper assertions
+- Creating reusable custom commands
+- Following BDD principles
+
+## Project Structure
+
+```
+├── cypress/
+│   ├── e2e/features/          # Gherkin feature files
+│   ├── support/
+│   │   ├── step_definitions/  # Step definition files
+│   │   ├── commands.js        # Custom Cypress commands
+│   │   └── e2e.js            # Support configuration
+│   └── fixtures/              # Test data
+├── .github/workflows/         # CI/CD pipeline
+├── cypress.config.js          # Cypress configuration
+└── package.json
+```
+
+## Available Scripts
+
+- `npm test` - Run tests in headless mode
+- `npm run cy:open` - Open Cypress interactive mode
+- `npm run test:chrome` - Run tests in Chrome
+- `npm run test:firefox` - Run tests in Firefox
+- `npm run test:edge` - Run tests in Edge
+
+## Tips for Success
+
+1. **Start with the feature file** - Understand what needs to be tested
+2. **Implement step definitions gradually** - One scenario at a time
+3. **Use custom commands** - For reusable actions
+4. **Add proper assertions** - Verify expected outcomes
+5. **Handle edge cases** - Consider error scenarios
+6. **Keep it maintainable** - Write clean, readable code
+
+## Evaluation Criteria
+
+- Completeness of implementation
+- Code quality and organization
+- Proper use of Cypress and Gherkin
+- Test coverage and reliability
+- Documentation and comments
+
+Good luck! 🚀

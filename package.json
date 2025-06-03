@@ -1,11 +1,35 @@
 {
-  "devDependencies": {
-    "chai": "^5.1.0",
-    "mocha": "^10.3.0",
-    "selenium-webdriver": "^4.18.1"
-  },
+  "name": "cypress-gherkin-challenge",
+  "version": "1.0.0",
+  "description": "Cypress/Gherkin coding challenge for automation testing",
+  "main": "index.js",
   "scripts": {
-    "test": "mocha frontend.spec.mjs --timeout 10000"
+    "test": "cypress run",
+    "cy:open": "cypress open",
+    "test:chrome": "cypress run --browser chrome",
+    "test:firefox": "cypress run --browser firefox",
+    "test:edge": "cypress run --browser edge",
+    "test:headless": "cypress run --headless"
   },
-  "type": "module"
+  "keywords": [
+    "cypress",
+    "gherkin",
+    "cucumber",
+    "bdd",
+    "testing"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "cypress": "^13.6.0",
+    "@badeball/cypress-cucumber-preprocessor": "^19.2.0",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": false,
+    "stepDefinitions": "cypress/support/step_definitions/**/*.{js,ts}",
+    "html": {
+      "enabled": true
+    }
+  }
 }
