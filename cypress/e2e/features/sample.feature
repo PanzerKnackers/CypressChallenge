@@ -1,39 +1,32 @@
-Feature: Cypress Kitchen Sink Testing
-  As a QA engineer
-  I want to test the Cypress example application
-  So that I can demonstrate my automation skills
+Feature: Dozuki Site Management Testing
+  As a site administrator
+  I want to manage basic site settings
+  So that I can configure my Dozuki site
 
   Background:
-    Given I am on the Cypress Kitchen Sink application
+    Given I am on the site management page
 
   @smoke
-  Scenario: Verify page title and main navigation
-    When I visit the main page
-    Then I should see the page title contains "Kitchen Sink"
-    And I should see the main navigation sidebar
+  Scenario: Verify page elements are present
+    When I visit the site management page
+    Then I should see the site title "bughunt"
+    And I should see the management sidebar
+    And I should see the settings table
 
-  @regression
-  Scenario: Navigate to Actions section and interact with elements
-    Given I navigate to the "Actions" section
-    When I interact with action elements
-    Then the interactions should work correctly
+  @main-challenge
+  Scenario: Edit site title setting
+    Given I am viewing the site title setting
+    When I click the edit link for site title
+    Then the setting should become editable
+    When I change the title to "Test Site"
+    And I save the changes
+    Then the title should be updated to "Test Site"
+    And the setting should return to view mode
 
-  @regression
-  Scenario Outline: Test navigation to different sections
-    Given I am on the main page
-    When I navigate to the "<section>" section
-    Then I should be on the "<section>" page
-    And the page should load correctly
-
-    Examples:
-      | section    |
-      | Querying   |
-      | Actions    |
-      | Assertions |
-
-  @challenge
-  Scenario: Complete form interactions (TODO for candidates)
-    Given I navigate to the "Actions" section
-    When I fill out various form elements
-    Then all form inputs should accept my data
-    And I should be able to interact with buttons and links
+  @bonus
+  Scenario: Edit site description
+    Given I am viewing the site description setting  
+    When I edit the site description to "A test description"
+    And I save the changes
+    Then the description should be updated
+    And the form should return to view mode

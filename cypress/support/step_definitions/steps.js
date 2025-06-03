@@ -1,91 +1,90 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
-// Background steps
-Given("I am on the Cypress Kitchen Sink application", () => {
-  cy.visit("/");
+// Background and setup steps
+Given("I am on the site management page", () => {
+  cy.visit("/Manage/site_settings");
+  cy.url().should('include', '/Manage/site_settings');
 });
 
-Given("I am on the main page", () => {
-  cy.visit("/");
+Given("I am viewing the site title setting", () => {
+  cy.visit("/Manage/site_settings");
+  cy.get('#site-title').should('be.visible');
 });
 
-// Navigation steps  
-When("I visit the main page", () => {
-  cy.visit("/");
+Given("I am viewing the site description setting", () => {
+  cy.visit("/Manage/site_settings");
+  cy.get('#site-description').should('be.visible');
 });
 
-When("I navigate to the {string} section", (section) => {
-  cy.get('.navbar-nav').contains(section).click();
+// Navigation and verification steps (COMPLETED)
+When("I visit the site management page", () => {
+  cy.visit("/Manage/site_settings");
 });
 
-// Assertion steps
-Then("I should see the page title contains {string}", (title) => {
-  cy.title().should("contain", title);
+Then("I should see the site title {string}", (title) => {
+  cy.get('.header-logo h1').should('contain.text', title);
 });
 
-Then("I should see the main navigation sidebar", () => {
-  cy.get('.navbar-nav').should('be.visible');
-  cy.get('.navbar-nav').should('contain', 'Querying');
-  cy.get('.navbar-nav').should('contain', 'Actions');
+Then("I should see the management sidebar", () => {
+  cy.get('#manageSideBar').should('be.visible');
+  cy.get('#js-configuration-group').should('contain.text', 'Configuration');
 });
 
-Then("I should be on the {string} page", (section) => {
-  cy.url().should('include', section.toLowerCase());
+Then("I should see the settings table", () => {
+  cy.get('table.settings').should('be.visible');
+  cy.get('#site-title').should('be.visible');
 });
 
-Then("the page should load correctly", () => {
-  cy.get('h1, h2, h3').should('be.visible');
+// TODO: Main challenge - implement these step definitions
+When("I click the edit link for site title", () => {
+  // TODO: Implement clicking the edit link
+  // Hint: Look for the edit link within the site-title row
+  cy.log('TODO: Click the edit link for site title');
 });
 
-// Actions section interactions
-Given("I navigate to the {string} section", (section) => {
-  cy.get('.navbar-nav').contains(section).click();
+Then("the setting should become editable", () => {
+  // TODO: Verify the setting is now in edit mode
+  // Hint: Check for .active class and .editing div visibility
+  cy.log('TODO: Verify setting is in edit mode');
 });
 
-When("I interact with action elements", () => {
-  // Basic interaction - click on a button if available
-  cy.get('button').first().should('be.visible');
-  cy.log('Interacting with action elements');
+When("I change the title to {string}", (newTitle) => {
+  // TODO: Clear the input and type the new title
+  // Hint: Find the input field within the site-title setting
+  cy.log(`TODO: Change title to ${newTitle}`);
 });
 
-Then("the interactions should work correctly", () => {
-  // Verify we're in the actions section
-  cy.url().should('include', 'actions');
-  cy.get('h1').should('contain', 'Actions');
+When("I save the changes", () => {
+  // TODO: Click the save button
+  // Hint: Look for the .save button within the active setting
+  cy.log('TODO: Save the changes');
 });
 
-// TODO scenarios for candidates to implement
-When("I fill out various form elements", () => {
-  // TODO: Implement form filling logic
-  // Candidates should find and interact with:
-  // - Text inputs
-  // - Checkboxes
-  // - Radio buttons
-  // - Select dropdowns
-  // - File uploads (if available)
-  cy.log('TODO: Implement form filling logic');
-  
-  // Hint: Look for elements in the Actions section
-  // Example patterns:
-  // cy.get('[data-cy="action-email"]').type('test@example.com');
-  // cy.get('[data-cy="action-disabled"]').should('be.disabled');
+Then("the title should be updated to {string}", (expectedTitle) => {
+  // TODO: Verify the title was updated in the viewing mode
+  // Hint: Check the .viewing .value element contains the new title
+  cy.log(`TODO: Verify title updated to ${expectedTitle}`);
 });
 
-Then("all form inputs should accept my data", () => {
-  // TODO: Implement form validation
-  // Candidates should verify:
-  // - Text was entered correctly
-  // - Checkboxes/radios were selected
-  // - Dropdowns show correct selection
-  cy.log('TODO: Implement form validation logic');
+Then("the setting should return to view mode", () => {
+  // TODO: Verify the setting is no longer in edit mode
+  // Hint: Check that .active class is removed and .viewing is visible
+  cy.log('TODO: Verify setting returned to view mode');
 });
 
-Then("I should be able to interact with buttons and links", () => {
-  // TODO: Implement button/link interaction testing
-  // Candidates should test:
-  // - Button clicks
-  // - Link navigation
-  // - Hover effects
-  // - Focus states
-  cy.log('TODO: Implement button and link interaction logic');
+// BONUS: Site description editing (simpler version)
+When("I edit the site description to {string}", (newDescription) => {
+  // TODO: Complete workflow - edit link, change text, save
+  // This combines multiple steps into one for the bonus scenario
+  cy.log(`TODO: Edit site description to ${newDescription}`);
+});
+
+Then("the description should be updated", () => {
+  // TODO: Verify description was saved
+  cy.log('TODO: Verify description was updated');
+});
+
+Then("the form should return to view mode", () => {
+  // TODO: Verify form returned to view mode
+  cy.log('TODO: Verify form returned to view mode');
 });
