@@ -13,20 +13,23 @@ Welcome to the Cypress/Gherkin coding challenge! This is a focused 30-minute ass
 
 **Goal**: Complete the main scenario step definitions to make the failing test pass.
 
-### ✅ What's Already Working:
-- Basic page navigation and verification
-- Site title and sidebar validation
-- Project setup and configuration
-
 ### 🔧 What You Need to Implement (Main Challenge):
 Complete these step definitions in `cypress/support/step_definitions/steps.js`:
 
-1. **Click edit link**: `When("I click the edit link for site title")`
-2. **Verify edit mode**: `Then("the setting should become editable")`  
-3. **Change title**: `When("I change the title to {string}")`
-4. **Save changes**: `When("I save the changes")`
-5. **Verify update**: `Then("the title should be updated to {string}")`
-6. **Verify view mode**: `Then("the setting should return to view mode")`
+1. **Login Implementation**: `Given("I am logged in as an administrator")`
+   - Visit the login page
+   - Enter admin credentials (provided by interviewer)
+   - Submit the form
+   - Verify successful login
+   - Click the manage button (gear icon) to access site settings
+   - Navigate to `/Manage/site_settings`
+
+2. **Click edit link**: `When("I click the edit link for site title")`
+3. **Verify edit mode**: `Then("the setting should become editable")`  
+4. **Change title**: `When("I change the title to {string}")`
+5. **Save changes**: `When("I save the changes")`
+6. **Verify update**: `Then("the title should be updated to {string}")`
+7. **Verify view mode**: `Then("the setting should return to view mode")`
 
 ### 🌟 Bonus (If Time Permits):
 Implement the site description editing scenario.
@@ -34,6 +37,16 @@ Implement the site description editing scenario.
 ## Test Target
 
 **URL**: `https://bughunt.jglenn.dozuki.dev/Manage/site_settings`
+
+**Login Page Elements**:
+- `input[name="username"]` - Username input field
+- `input[name="password"]` - Password input field
+- `button[type="submit"]` - Login submit button
+
+**Manage Button**:
+- SVG icon with class `fa-gear` and `chakra-icon`
+- Located in the header/navigation area
+- Click this to access site settings
 
 **Key Elements**:
 - `#site-title` - The site title setting row

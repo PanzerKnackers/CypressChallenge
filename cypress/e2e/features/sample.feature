@@ -4,7 +4,8 @@ Feature: Dozuki Site Management Testing
   So that I can configure my Dozuki site
 
   Background:
-    Given I am on the site management page
+    Given I am logged in as an administrator
+    And I am on the site management page
 
   @smoke
   Scenario: Verify page elements are present
